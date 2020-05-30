@@ -28,10 +28,4 @@ class Ticket
         values = [@customer_id, @film_id]
         SqlRunner.run(sql, values)
     end
-
-    def update()
-        sql = "UPDATE tickets SET (customer_id, film_id) = ($1, $2)"
-        values = [@customer_id, @film_id]
-        SqlRunner.run(sql, values)
-    end
 end

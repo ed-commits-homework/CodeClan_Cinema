@@ -43,3 +43,13 @@ Ticket.buy(homer, forest_gump)
 puts cartman.check_wallet
 puts barney.check_wallet
 puts homer.check_wallet
+
+# Show which films a customer has booked to see
+# and see which customers are coming to see one film.
+
+cartman.list_films
+barney.list_films
+homer.list_films
+
+binding.pry
+nil

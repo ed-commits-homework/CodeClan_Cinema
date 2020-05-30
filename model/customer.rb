@@ -14,15 +14,19 @@ class Customer
         values = [@name, @funds]
         row = SqlRunner.run(sql, values).first
         @id = row['id'].to_i
-    end    
+    end
 
     def update()
-        sql = "UPDATE customers SET (name, funds) = ($1, $2)"
-        values = [@name, @funds]
+        sql = "UPDATE customers SET (name, funds) = ($1, $2) WHERE id = $3"
+        values = [@name, @funds, @id]
         SqlRunner.run(sql, values).first
     end
 
     def check_wallet
         puts "#{@name} has $#{@funds} in their wallet"
+    end
+
+    def list_films
+
     end
 end
