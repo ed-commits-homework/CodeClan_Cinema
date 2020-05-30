@@ -1,6 +1,10 @@
 class Film
     attr_reader :id
     attr_accessor :title, :price
+
+    def Film.initialize_many(array)
+        return array.map{|entry| Film.new(entry)}
+    end
     
     def initialize(options)
         @id = options["id"].to_i if options["id"]

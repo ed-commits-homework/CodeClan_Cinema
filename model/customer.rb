@@ -1,3 +1,5 @@
+require_relative('./film')
+
 class Customer
     attr_reader :id
     attr_accessor :name, :funds
@@ -27,6 +29,19 @@ class Customer
     end
 
     def list_films
+        sql = "SELECT * FROM films
+                INNER JOIN tickets
+                ON tickets.film_id = id
+                WHERE tickets.customer_id = $1"
+        values = [@id]
+        return Film.initialize_many(SqlRunner.run(sql, values))
+    end
 
+    def display_films
+        puts "#{@name} is watching.."
+        list_films.each do |film|
+            puts "- #{film.title}"
+        end
+        puts
     end
 end

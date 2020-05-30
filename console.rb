@@ -10,7 +10,7 @@ SqlRunner.run("DELETE FROM films")
 
 cartman = Customer.new({
     "name" => "cartman",
-    "funds" => 100
+    "funds" => 180
 })
 barney = Customer.new({
     "name" => "barney",
@@ -47,9 +47,9 @@ puts homer.check_wallet
 # Show which films a customer has booked to see
 # and see which customers are coming to see one film.
 
-cartman.list_films
-barney.list_films
-homer.list_films
+cartman.display_films
+barney.display_films
+homer.display_films
 
 binding.pry
 nil
