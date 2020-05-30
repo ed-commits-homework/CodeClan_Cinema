@@ -45,11 +45,13 @@ puts barney.check_wallet
 puts homer.check_wallet
 
 # Show which films a customer has booked to see
-# and see which customers are coming to see one film.
-
 cartman.display_films
 barney.display_films
 homer.display_films
+
+# and see which customers are coming to see one film.
+puts "Who is watching forest gump"
+puts bee_movie.list_customers.map{|c|c.name}
 
 binding.pry
 nil

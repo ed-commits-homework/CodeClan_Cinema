@@ -4,11 +4,19 @@ class Customer
     attr_reader :id
     attr_accessor :name, :funds
     
+    def Customer.initialize_many(array)
+        return array.map{|entry| Customer.new(entry)}
+    end
+    
     def initialize(options)
         @id = options["id"].to_i if options["id"]
         @name = options["name"]
         @funds = options["funds"].to_i
-        save
+        if @id.nil?
+            save
+        else
+            update
+        end
     end
 
     def save()

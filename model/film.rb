@@ -10,7 +10,11 @@ class Film
         @id = options["id"].to_i if options["id"]
         @title = options["title"]
         @price = options["price"].to_i
-        save
+        if @id.nil?
+            save
+        else
+            update
+        end
     end
 
     def save()
@@ -24,5 +28,14 @@ class Film
         sql = "UPDATE films SET (title, price) = ($1, $2) WHERE id = $3"
         values = [@title, @price, @id]
         SqlRunner.run(sql, values)
+    end
+
+    def list_customers
+        sql = "SELECT * FROM customers
+                INNER JOIN tickets
+                ON tickets.customer_id = id
+                WHERE tickets.film_id = $1"
+        values = [@id]
+        return Customer.initialize_many(SqlRunner.run(sql, values))
     end
 end
