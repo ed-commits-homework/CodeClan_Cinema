@@ -4,7 +4,9 @@ require_relative('./model/customer')
 require_relative('./model/film')
 require_relative('./model/ticket')
 
-SqlRunner.run("SELECT * FROM tickets")
+SqlRunner.run("DELETE FROM tickets")
+SqlRunner.run("DELETE FROM customers")
+SqlRunner.run("DELETE FROM films")
 
 cartman = Customer.new({
     "name" => "cartman",
