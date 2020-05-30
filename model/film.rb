@@ -38,4 +38,8 @@ class Film
         values = [@id]
         return Customer.initialize_many(SqlRunner.run(sql, values))
     end
+
+    def how_many_customers
+        return list_customers.length
+    end
 end

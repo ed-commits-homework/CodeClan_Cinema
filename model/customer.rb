@@ -52,4 +52,8 @@ class Customer
         end
         puts
     end
+
+    def how_many_films
+        return list_films.length
+    end
 end
